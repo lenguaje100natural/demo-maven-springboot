@@ -1,9 +1,11 @@
 package com.example.demomaven.domain;
 
-public class Carro {
+public class Carro implements ICarro{
     private String id;
     private String color;
     private int velocidad;
+    private boolean encendido;
+
     public Carro() {
     }
 
@@ -19,12 +21,20 @@ public class Carro {
         this.id = id;
     }
 
-    public float acelerar(int aceleracion) {
-        return velocidad += aceleracion; // velocidad = velocidad + aceleracion
+    public String getColor() {
+        return color;
     }
 
-    public float frenar(float aceleracion) {
-        return velocidad -= aceleracion;// velocidad = velocidad - aceleracion
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public int getVelocidad() {
+        return velocidad;
+    }
+
+    public void setVelocidad(int velocidad) {
+        this.velocidad = velocidad;
     }
 
     /*
@@ -36,6 +46,22 @@ public class Carro {
                 "id='" + id + '\'' +
                 ", color='" + color + '\'' +
                 ", velocidad=" + velocidad +
+                ", encendio=" + encendido +
                 '}';
+    }
+
+    @Override
+    public float acelerar(int aceleracion) {
+        return velocidad += aceleracion; // velocidad = velocidad + aceleracion
+    }
+
+    @Override
+    public float frenar(float aceleracion) {
+        return velocidad -= aceleracion;// velocidad = velocidad - aceleracion
+    }
+
+    @Override
+    public boolean encender() {
+        return this.encendido = true;
     }
 }
